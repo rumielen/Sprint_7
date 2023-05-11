@@ -1,9 +1,7 @@
-package com.my;
+package com.my.courier;
 
-import com.my.Courier;
-import com.my.CourierClient;
-import com.my.CourierCredentials;
-import com.my.CourierGenerator;
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
@@ -36,9 +34,11 @@ public class CourierLoginPositiveTest {
     }
 
     @Test
+    @DisplayName("Проверка авторизации курьера")
+    @Description("Проверяет, что при валидных значения логина и пароля авторизация проходит успешно")
     public void courierLoginSuccess() {
         courier = CourierGenerator.getRandom();
-        ValidatableResponse createResponse = courierClient.create(courier);
+        ValidatableResponse createResponse = courierClient.createCourier(courier);
         ValidatableResponse loginResponse = courierClient.login(CourierCredentials.from(courier));
         int statusCode = loginResponse.extract().statusCode();
         courierId = loginResponse.extract().path("id");

@@ -1,5 +1,6 @@
-package com.my;
+package com.my.order;
 
+import com.my.courier.RestClient;
 import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;

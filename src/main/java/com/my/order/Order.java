@@ -1,4 +1,4 @@
-package com.my;
+package com.my.order;
 
 public class Order {
     public String getFirstName() {

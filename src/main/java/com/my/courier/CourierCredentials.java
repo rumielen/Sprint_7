@@ -1,4 +1,4 @@
-package com.my;
+package com.my.courier;
 
 public class CourierCredentials {
 

@@ -1,9 +1,7 @@
-package com.my;
+package com.my.courier;
 
-import com.my.Courier;
-import com.my.CourierClient;
-import com.my.CourierCredentials;
-import com.my.CourierGenerator;
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
@@ -28,11 +26,13 @@ public class CourierCreatePositiveTest {
     }
 
     @Test
+    @DisplayName("Проверка создания курьера")
+    @Description("Проверяет, что курьер создается при указании валидных значений логина и пароля")
     public void courierCanBeCreated() {
 
         courier = CourierGenerator.getRandom();
         //вызвать эндпоинт
-        ValidatableResponse createResponse = courierClient.create(courier);
+        ValidatableResponse createResponse = courierClient.createCourier(courier);
 
         //проверить статуc код, тело
         int statusCode = createResponse.extract().statusCode();
@@ -48,11 +48,13 @@ public class CourierCreatePositiveTest {
     }
 
     @Test
+    @DisplayName("Невозможно создать двух одинаковых курьеров")
+    @Description("Проверяет, что система выдает ошибку при создании двух одинаковых курьеров")
     public void twoSameCouriersAreNotCreated() {
         courier = CourierGenerator.getSpecific();
-        ValidatableResponse createResponse1 = courierClient.create(courier);
+        ValidatableResponse createResponse1 = courierClient.createCourier(courier);
         courier = CourierGenerator.getSpecific();
-        ValidatableResponse createResponse2 = courierClient.create(courier);
+        ValidatableResponse createResponse2 = courierClient.createCourier(courier);
 
         //проверить статуc код, тело
         int statusCode1 = createResponse1.extract().statusCode();

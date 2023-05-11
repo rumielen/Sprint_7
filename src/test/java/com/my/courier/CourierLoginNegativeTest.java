@@ -1,10 +1,11 @@
-package com.my;
+package com.my.courier;
 
-import com.my.Courier;
-import com.my.CourierClient;
-import com.my.CourierCredentials;
-import com.my.CourierGenerator;
-import groovyjarjarantlr4.v4.runtime.atn.SemanticContext;
+import com.my.courier.Courier;
+import com.my.courier.CourierClient;
+import com.my.courier.CourierCredentials;
+import com.my.courier.CourierGenerator;
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
@@ -51,6 +52,8 @@ public class CourierLoginNegativeTest {
     }
 
     @Test
+    @DisplayName("Проверка авторизации с некорректным логином, паролем")
+    @Description("Проверяет, что система выдает ошибку при авторизации с пустым, а также некорректным логином и паролем")
     public void courierIsNotLoginWithWrongFields() {
         boolean courierIsNotLogin=false;
         ValidatableResponse loginResponse = courierClient.login(CourierCredentials.from(courier));

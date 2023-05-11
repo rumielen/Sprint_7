@@ -1,4 +1,4 @@
-package com.my;
+package com.my.order;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.my;
+package com.my.courier;
 
 import io.restassured.response.ValidatableResponse;
 
@@ -10,7 +10,7 @@ public class CourierClient extends RestClient {
     private final static String COURIER_PATH = "/api/v1/courier";
     private final static String COURIER_LOGIN = "/api/v1/courier/login";
 
-    public ValidatableResponse create(Courier courier) {
+    public ValidatableResponse createCourier(Courier courier) {
         return given()
                 .spec(getBaseSpec())
                 .body(courier)

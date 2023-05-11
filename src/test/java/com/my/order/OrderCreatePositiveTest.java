@@ -1,8 +1,10 @@
-package com.my;
+package com.my.order;
 
-import com.my.Order;
-import com.my.OrderGenerator;
-import com.my.OrderRequests;
+import com.my.order.Order;
+import com.my.order.OrderGenerator;
+import com.my.order.OrderRequests;
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,6 +40,8 @@ public class OrderCreatePositiveTest {
     }
 
     @Test
+    @DisplayName("Заказ самоката")
+    @Description("Проверяет, что при заказе можно указать серый цвет, черный цвет, оба цвета или не указывать цвет")
     public void orderCanBeCreated() {
         int orderTrack;
         boolean orderIsCreatedSuccess = false;
